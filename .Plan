@@ -1,0 +1,159 @@
+# MuteDeck Raycast Extension Plan
+
+## Project Overview
+Integration between Raycast and MuteDeck's local API to provide quick meeting controls.
+
+- Base API: http://localhost:3491/
+- Core Commands:
+  - Toggle Microphone (mic) ✅
+  - Toggle Video (vid, video) ✅
+  - Leave Meeting (leave) ✅
+  - Status (status) ✅
+- Error States to Handle:
+  - MuteDeck not running ✅
+  - No active meeting ✅
+  - Command failures ✅
+
+## Implementation Tasks
+
+### 1. Initial Setup ✅
+- [x] Install Node.js and npm
+- [x] Set up Raycast extension structure
+- [x] Configure package.json
+- [x] Implement basic API communication
+- [x] Handle connection errors
+
+### 2. Command Implementation ✅
+- [x] Create individual command files
+- [x] Configure command metadata
+- [x] Implement core functionality
+
+### 3. Core API Integration ✅
+- [x] Implement MuteDeck API wrapper
+- [x] Create type definitions
+- [x] Implement error handling
+
+### 4. Command Implementation ✅
+- [x] Toggle Microphone Command
+- [x] Toggle Video Command
+- [x] Leave Meeting Command
+- [x] Status Command
+
+### 5. UI/UX Implementation ✅
+- [x] Design minimal command interfaces
+- [x] Implement toast notifications
+- [x] Add keyboard shortcuts
+- [x] Create error messages
+
+### 6. Visual Identity ✅
+- [x] Set up command icons using Bootstrap Icons
+    - [x] Microphone icon
+    - [x] Video camera icon
+    - [x] Leave meeting icon
+    - [x] Status icon
+- [x] Configure icon generation script
+- [x] Set up SVG to PNG conversion
+- [x] Update package.json icon references
+
+### 7. Enhanced Features ✅
+- [x] Add user preferences
+    - [x] Custom API endpoint
+    - [x] Status refresh interval
+    - [x] Confirm leave meeting
+    - [x] Toggle toast notifications
+- [x] Implement keyboard shortcuts
+    - [x] Toggle Microphone (⌘ M)
+    - [x] Toggle Video (⌘ ⇧ V)
+    - [x] Leave Meeting (⌘ ⇧ L)
+    - [x] Show Status (⌘ ⇧ S)
+    - [x] Add customization instructions
+    - [x] Update tooltips and descriptions
+- [x] Add command aliases
+    - [x] Microphone: mute, unmute, mic, audio, sound, voice
+    - [x] Video: camera, cam, webcam, record, screen
+    - [x] Leave: exit, quit, disconnect, close, finish
+    - [x] Status: info, state, check, view, monitor
+- [x] Improve command metadata
+    - [x] Add detailed descriptions
+    - [x] Improve subtitles
+    - [x] Add usage examples
+
+### 8. UX Improvements
+- [x] Add loading states to commands
+    - [x] Initial status check
+    - [x] Action in progress
+    - [x] Success/failure states
+    - [x] Proper cleanup
+- [x] Enhance error messages with troubleshooting
+    - [x] Add detailed steps
+    - [x] Include common solutions
+    - [x] Improve readability
+    - [x] Add system-specific guidance
+- [x] Add confirmation dialogs for destructive actions
+    - [x] Leave meeting confirmation
+    - [x] Mute while presenting
+    - [x] Video while presenting
+- [x] Implement status indicators in command list
+    - [x] Add color coding
+    - [x] Enhance meeting status
+    - [x] Improve control indicators
+    - [x] Add Teams integration section
+    - [x] Improve UI with search and sections
+
+### 9. Documentation ✅
+- [x] Create basic README.md
+- [x] Add inline code documentation
+- [x] Create CHANGELOG.md
+- [x] Write contribution guidelines
+- [x] Add troubleshooting guide
+- [x] Add keyboard shortcut customization guide
+
+### 10. Store Preparation
+- [x] Create compelling store description
+- [x] Add feature highlights
+- [x] Include usage examples
+- [x] Take professional screenshots
+    - [x] Command list view (1600×1000, dark mode)
+    - [x] Status display (1600×1000, dark mode)
+    - [x] Toast notifications (1600×1000, dark mode)
+    - [x] Error states (1600×1000, dark mode)
+    - [x] Preferences view (1600×1000, dark mode)
+- [x] Write clear installation instructions
+
+## Immediate Next Tasks
+1. Prepare preview media for store listing
+   - Create feature highlight GIFs showing:
+     - Quick mute/unmute with keyboard shortcuts
+     - Camera control with status feedback
+     - Meeting leave confirmation flow
+     - Error handling and recovery
+   - Record usage demonstrations:
+     - Full workflow from start to finish
+     - Common troubleshooting scenarios
+     - Preference customization
+   - Optimize media files:
+     - Compress GIFs for size
+     - Ensure smooth playback
+     - Match store requirements
+
+## Learnings & Notes
+1. Use emojis for consistent icon display
+2. Keep commands simple and direct
+3. Provide immediate feedback
+4. Handle connection issues gracefully
+5. Separate commands into individual files
+6. Use no-view mode for toggle commands
+7. Allow toggles even when not in meeting
+8. Use preferences for customization
+9. Use intuitive keyboard shortcuts
+10. Make shortcuts customizable
+11. Add comprehensive aliases for better discovery
+12. Show loading states for better UX
+13. Document keyboard shortcuts thoroughly
+14. Confirm potentially disruptive actions
+15. Prepare thorough store documentation
+16. Use Bootstrap Icons for consistent visual language
+17. Ensure icon formats match Raycast requirements
+18. Follow strict screenshot guidelines for store
+19. Test icon visibility in all contexts
+20. Clear cache when testing icon changes 
