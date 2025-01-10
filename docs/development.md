@@ -12,12 +12,14 @@
 ### Setup
 
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/yourusername/mutedeck-raycast-extension.git
    cd mutedeck-raycast-extension
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
@@ -61,6 +63,7 @@ mutedeck-raycast-extension/
 ### Testing
 
 1. Manual Testing
+
    - Test all commands
    - Verify error handling
    - Check UI/UX consistency
@@ -75,6 +78,7 @@ mutedeck-raycast-extension/
 ### Development
 
 1. Run development server:
+
    ```bash
    npm run dev
    ```
@@ -88,6 +92,7 @@ mutedeck-raycast-extension/
 ### Production
 
 1. Build extension:
+
    ```bash
    npm run build
    ```
@@ -147,11 +152,13 @@ mutedeck-raycast-extension/
 ### Common Issues
 
 1. Build Errors
+
    - Check Node.js version
    - Clear npm cache
    - Reinstall dependencies
 
 2. Runtime Errors
+
    - Check console logs
    - Verify API endpoints
    - Test with clean state
@@ -166,4 +173,4 @@ mutedeck-raycast-extension/
 - [Raycast Extensions Guide](https://developers.raycast.com)
 - [TypeScript Documentation](https://www.typescriptlang.org/docs)
 - [React Documentation](https://reactjs.org/docs)
-- [ESLint Rules](https://eslint.org/docs/rules) 
+- [ESLint Rules](https://eslint.org/docs/rules)

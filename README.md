@@ -39,11 +39,13 @@ You can assign custom keyboard shortcuts to any command through Raycast preferen
 ### Common Issues
 
 1. **Commands not working**
+
    - Ensure MuteDeck desktop app is running
    - Check if you're in an active meeting
    - Verify permissions are granted
 
 2. **Icons not visible**
+
    - Restart Raycast
    - Clear command cache (⌘ + ⌥ + R)
    - Reinstall extension if needed
@@ -56,6 +58,7 @@ You can assign custom keyboard shortcuts to any command through Raycast preferen
 ## Development
 
 See [Development Guidelines](docs/development.md) for detailed information about:
+
 - Setting up the development environment
 - Code quality standards
 - Testing procedures
@@ -64,6 +67,7 @@ See [Development Guidelines](docs/development.md) for detailed information about
 ## Contributing
 
 We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details on:
+
 - Code of conduct
 - Development process
 - Pull request guidelines

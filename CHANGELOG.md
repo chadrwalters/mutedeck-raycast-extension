@@ -5,9 +5,10 @@ All notable changes to the MuteDeck Raycast extension will be documented in this
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] - 2024-03-XX
+## [1.0.0] - 2024-03-15
 
 ### Added
+
 - Initial release of MuteDeck Raycast extension
 - Core meeting control commands:
   - Toggle Microphone (⌘ M)
@@ -33,6 +34,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - Contribution guidelines
 
 ### Security
+
 - Local-only API communication (http://localhost:3491)
 - No external data transmission
 - Secure preference handling
@@ -40,6 +42,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Planned
+
 - Meeting platform detection
 - Meeting duration tracking
 - Custom notification sounds

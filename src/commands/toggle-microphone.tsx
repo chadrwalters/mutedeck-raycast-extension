@@ -1,40 +1,56 @@
-import { showToast, Toast } from "@raycast/api";
-import { getStatus, toggleMute, isMuteDeckRunning, isInMeeting, isMuted } from "../utils/api";
+import { showToast, Toast, confirmAlert, getPreferenceValues, Alert } from '@raycast/api';
+import { toggleMute, getStatus, isPresenting } from '../utils/api';
 
-export default async function Command() {
-  try {
-    const status = await getStatus();
+interface Preferences {
+  confirmMuteInPresentation: boolean;
+  showToasts: boolean;
+}
 
-    if (!isMuteDeckRunning(status)) {
-      await showToast({
-        style: Toast.Style.Failure,
-        title: "MuteDeck Not Running",
-        message: "Please start MuteDeck and try again"
-      });
-      return;
-    }
+export default function Command(): Promise<void> {
+  const { confirmMuteInPresentation, showToasts } = getPreferenceValues<Preferences>();
 
-    if (!isInMeeting(status)) {
-      await showToast({
-        style: Toast.Style.Failure,
-        title: "No Active Meeting",
-        message: "Please join a meeting first"
-      });
-      return;
-    }
+  return new Promise<void>((resolve, reject) => {
+    const handleToggle = async (): Promise<void> => {
+      try {
+        if (confirmMuteInPresentation) {
+          const status = await getStatus();
+          if (isPresenting(status)) {
+            const proceed = await confirmAlert({
+              title: 'Toggle Microphone While Presenting',
+              message: 'Are you sure you want to toggle your microphone while presenting?',
+              primaryAction: {
+                title: 'Toggle Microphone',
+                style: Alert.ActionStyle.Destructive,
+              },
+            });
 
-    await toggleMute();
-    const newStatus = await getStatus();
-    
-    await showToast({
-      style: Toast.Style.Success,
-      title: isMuted(newStatus) ? "Microphone Muted" : "Microphone Unmuted"
-    });
-  } catch (error) {
-    await showToast({
-      style: Toast.Style.Failure,
-      title: "Failed to Toggle Microphone",
-      message: error instanceof Error ? error.message : "Unknown error occurred"
-    });
-  }
-} 
+            if (!proceed) {
+              resolve();
+              return;
+            }
+          }
+        }
+
+        await toggleMute();
+
+        if (showToasts) {
+          await showToast({
+            style: Toast.Style.Success,
+            title: 'Toggled Microphone',
+          });
+        }
+
+        resolve();
+      } catch (error) {
+        await showToast({
+          style: Toast.Style.Failure,
+          title: 'Failed to Toggle Microphone',
+          message: error instanceof Error ? error.message : String(error),
+        });
+        reject(error);
+      }
+    };
+
+    void handleToggle();
+  });
+}

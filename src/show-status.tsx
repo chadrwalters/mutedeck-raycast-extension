@@ -1,187 +1,100 @@
-import { List, Icon, Color } from "@raycast/api";
-import { useState, useEffect, useCallback, useMemo } from "react";
-import { getStatus, isMuteDeckRunning, isInMeeting, isMuted, isVideoOn, isPresenting, isRecording, getPreferences } from "./utils/api";
-import type { MuteDeckStatus } from "./utils/api";
+import { List, Icon, ActionPanel, Action, showToast, Toast } from '@raycast/api';
+import { useEffect, useState } from 'react';
+import {
+  getStatus,
+  isMuteDeckRunning,
+  isInMeeting,
+  isMuted,
+  isVideoOn,
+  type MuteDeckStatus,
+} from './utils/api';
 
-export default function Command() {
-  const [status, setStatus] = useState<MuteDeckStatus | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  
-  const preferences = useMemo(() => getPreferences(), []);
-  const refreshInterval = useMemo(() => parseInt(preferences.statusRefreshInterval, 10), [preferences.statusRefreshInterval]);
+interface State {
+  status: MuteDeckStatus | null;
+  isLoading: boolean;
+  error: Error | null;
+}
 
-  const fetchStatus = useCallback(async () => {
-    try {
-      const newStatus = await getStatus();
-      setStatus(newStatus);
-      setError(null);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Failed to fetch status");
-    }
-  }, []);
-
-  useEffect(() => {
-    let mounted = true;
-    
-    const updateStatus = async () => {
-      if (!mounted) return;
-      await fetchStatus();
-    };
-
-    updateStatus();
-    const interval = setInterval(updateStatus, refreshInterval * 1000);
-    
-    return () => {
-      mounted = false;
-      clearInterval(interval);
-    };
-  }, [fetchStatus, refreshInterval]);
-
-  if (error) {
-    return (
-      <List>
-        <List.EmptyView
-          icon={Icon.ExclamationMark}
-          title="Error"
-          description={error}
-        />
-      </List>
-    );
-  }
-
-  if (!status) {
-    return (
-      <List>
-        <List.EmptyView
-          icon={Icon.Clock}
-          title="Loading..."
-          description="Fetching MuteDeck status"
-        />
-      </List>
-    );
-  }
-
-  if (!isMuteDeckRunning(status)) {
-    return (
-      <List>
-        <List.EmptyView
-          icon={Icon.Warning}
-          title="MuteDeck Not Running"
-          description="Please start MuteDeck and try again"
-        />
-      </List>
-    );
-  }
-
-  const getStatusIcon = (isActive: boolean, activeIcon: Icon, inactiveIcon: Icon) => ({
-    icon: isActive ? activeIcon : inactiveIcon,
-    tintColor: isActive ? Color.Green : Color.Red,
+export default function Command(): JSX.Element {
+  const [state, setState] = useState<State>({
+    status: null,
+    isLoading: true,
+    error: null,
   });
 
-  const getMeetingStatusAccessories = (status: MuteDeckStatus) => {
-    const accessories = [];
+  useEffect(() => {
+    void fetchStatus();
+  }, []);
 
-    if (isPresenting(status)) {
-      accessories.push({
-        icon: Icon.Desktop,
-        tooltip: "Presenting",
-        text: "Presenting"
-      });
+  async function fetchStatus(): Promise<void> {
+    try {
+      const status = await getStatus();
+      setState(prev => ({ ...prev, status, isLoading: false }));
+    } catch (error) {
+      setState(prev => ({
+        ...prev,
+        error: error instanceof Error ? error : new Error('Failed to fetch status'),
+        isLoading: false,
+      }));
+    }
+  }
+
+  function getStatusIcon(): Icon {
+    if (!state.status || !isMuteDeckRunning(state.status)) {
+      return Icon.XMarkCircle;
     }
 
-    if (isRecording(status)) {
-      accessories.push({
-        icon: Icon.Circle,
-        tooltip: "Recording in progress",
-        text: "Recording"
-      });
+    if (!isInMeeting(state.status)) {
+      return Icon.Circle;
     }
 
-    accessories.push({
-      text: status.control,
-      tooltip: `Control: ${status.control}`
+    if (isMuted(state.status)) {
+      return Icon.MicrophoneDisabled;
+    }
+
+    return Icon.Microphone;
+  }
+
+  if (state.error) {
+    showToast({
+      style: Toast.Style.Failure,
+      title: 'Failed to Get Status',
+      message: state.error.message,
     });
-
-    return accessories;
-  };
+  }
 
   return (
-    <List
-      isLoading={false}
-      searchBarPlaceholder="Filter controls..."
-    >
-      <List.Section title="Meeting Status">
+    <List isLoading={state.isLoading}>
+      <List.Item
+        icon={getStatusIcon()}
+        title="MuteDeck Status"
+        accessories={[
+          {
+            text: state.status
+              ? isMuteDeckRunning(state.status)
+                ? isInMeeting(state.status)
+                  ? isMuted(state.status)
+                    ? 'Muted'
+                    : 'Unmuted'
+                  : 'Not in Meeting'
+                : 'Not Running'
+              : 'Unknown',
+          },
+        ]}
+        actions={
+          <ActionPanel>
+            <Action title="Refresh Status" onAction={fetchStatus} />
+          </ActionPanel>
+        }
+      />
+      {state.status && isMuteDeckRunning(state.status) && isInMeeting(state.status) && (
         <List.Item
-          {...getStatusIcon(isInMeeting(status), Icon.Dot, Icon.Circle)}
-          title="Meeting"
-          subtitle={isInMeeting(status) ? "Active" : "Not in meeting"}
-          accessories={getMeetingStatusAccessories(status)}
+          icon={isVideoOn(state.status) ? Icon.Video : Icon.VideoDisabled}
+          title="Camera Status"
+          accessories={[{ text: isVideoOn(state.status) ? 'On' : 'Off' }]}
         />
-      </List.Section>
-
-      <List.Section title="Controls">
-        <List.Item
-          {...getStatusIcon(isMuted(status), Icon.Circle, Icon.Microphone)}
-          title="Microphone"
-          subtitle={isMuted(status) ? "Muted" : "Unmuted"}
-          accessories={[
-            {
-              icon: isMuted(status) ? Icon.XmarkCircle : Icon.CheckCircle,
-              tooltip: isMuted(status) ? "Audio is muted" : "Audio is active",
-            },
-            {
-              text: "⌘ M",
-              tooltip: "Default shortcut (customizable in Raycast Preferences)"
-            }
-          ]}
-        />
-        <List.Item
-          {...getStatusIcon(isVideoOn(status), Icon.Camera, Icon.Circle)}
-          title="Camera"
-          subtitle={isVideoOn(status) ? "On" : "Off"}
-          accessories={[
-            {
-              icon: isVideoOn(status) ? Icon.CheckCircle : Icon.XmarkCircle,
-              tooltip: isVideoOn(status) ? "Camera is active" : "Camera is off",
-            },
-            {
-              text: "⌘ ⇧ V",
-              tooltip: "Default shortcut (customizable in Raycast Preferences)"
-            }
-          ]}
-        />
-        <List.Item
-          icon={Icon.XmarkCircle}
-          title="Leave Meeting"
-          subtitle="End current call"
-          accessories={[
-            {
-              icon: Icon.ExclamationMark,
-              tooltip: "This will end your current meeting",
-            },
-            {
-              text: "⌘ ⇧ L",
-              tooltip: "Default shortcut (customizable in Raycast Preferences)"
-            }
-          ]}
-        />
-      </List.Section>
-
-      {status.teams_api !== "disabled" && (
-        <List.Section title="Teams Integration">
-          <List.Item
-            icon={Icon.Link}
-            title="Teams API"
-            subtitle={status.teams_api}
-            accessories={[
-              {
-                icon: status.teams_api === "connected" ? Icon.CheckCircle : Icon.XmarkCircle,
-                tooltip: `Teams API is ${status.teams_api}`,
-              }
-            ]}
-          />
-        </List.Section>
       )}
     </List>
   );
-} 
+}
+

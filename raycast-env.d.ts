@@ -26,24 +26,24 @@ type ExtensionPreferences = {
 declare type Preferences = ExtensionPreferences
 
 declare namespace Preferences {
+  /** Preferences accessible in the `show-status` command */
+  export type ShowStatus = ExtensionPreferences & {}
   /** Preferences accessible in the `toggle-microphone` command */
   export type ToggleMicrophone = ExtensionPreferences & {}
   /** Preferences accessible in the `toggle-video` command */
   export type ToggleVideo = ExtensionPreferences & {}
   /** Preferences accessible in the `leave-meeting` command */
   export type LeaveMeeting = ExtensionPreferences & {}
-  /** Preferences accessible in the `show-status` command */
-  export type ShowStatus = ExtensionPreferences & {}
 }
 
 declare namespace Arguments {
+  /** Arguments passed to the `show-status` command */
+  export type ShowStatus = {}
   /** Arguments passed to the `toggle-microphone` command */
   export type ToggleMicrophone = {}
   /** Arguments passed to the `toggle-video` command */
   export type ToggleVideo = {}
   /** Arguments passed to the `leave-meeting` command */
   export type LeaveMeeting = {}
-  /** Arguments passed to the `show-status` command */
-  export type ShowStatus = {}
 }
 

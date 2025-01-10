@@ -32,11 +32,13 @@ You can customize these shortcuts to better fit your workflow. Here's how:
 ### Tips for Choosing Shortcuts
 
 1. **Avoid System Conflicts**: Make sure your chosen shortcuts don't conflict with:
+
    - System shortcuts
    - Other Raycast extensions
    - Your meeting application's shortcuts
 
 2. **Easy to Remember**: Choose shortcuts that are:
+
    - Related to the action (e.g., M for Microphone)
    - Consistent with similar actions
    - Easy to reach while in a meeting
@@ -51,12 +53,14 @@ You can customize these shortcuts to better fit your workflow. Here's how:
 Here are some alternative shortcut configurations you might find useful:
 
 1. **Meeting-Focused**:
+
    - Toggle Microphone: `⌥ M`
    - Toggle Video: `⌥ V`
    - Leave Meeting: `⌥ L`
    - Show Status: `⌥ S`
 
 2. **Function Key Based**:
+
    - Toggle Microphone: `F1`
    - Toggle Video: `F2`
    - Leave Meeting: `F3`
@@ -73,11 +77,13 @@ Here are some alternative shortcut configurations you might find useful:
 If your shortcuts aren't working:
 
 1. Check for conflicts in:
+
    - System Preferences → Keyboard → Shortcuts
    - Other applications' preferences
    - Other Raycast extensions
 
 2. Try resetting to defaults:
+
    - Open Raycast Preferences
    - Go to Extensions → MuteDeck
    - Click the "×" next to the shortcut
@@ -91,11 +97,13 @@ If your shortcuts aren't working:
 ## Best Practices
 
 1. **Test Before Meetings**:
+
    - Try new shortcuts before important meetings
    - Make sure they work in your meeting software
    - Practice until they become muscle memory
 
 2. **Document Your Changes**:
+
    - Keep note of your customizations
    - Share with team members if using standard configurations
    - Consider documenting in your team's wiki
@@ -121,4 +129,4 @@ When using keyboard shortcuts, you'll receive immediate feedback:
 
 - Success notifications show the action taken
 - Error messages provide troubleshooting steps
-- Status updates show current state 
+- Status updates show current state

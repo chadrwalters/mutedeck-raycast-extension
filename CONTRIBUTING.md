@@ -5,6 +5,7 @@ Thank you for your interest in contributing to the MuteDeck Raycast extension! T
 ## Development Setup
 
 ### Prerequisites
+
 - Node.js 16 or later
 - npm 7 or later
 - Raycast installed
@@ -12,13 +13,16 @@ Thank you for your interest in contributing to the MuteDeck Raycast extension! T
 - Git
 
 ### Getting Started
+
 1. Clone the repository:
+
    ```bash
    git clone https://github.com/yourusername/mutedeck-raycast-extension.git
    cd mutedeck-raycast-extension
    ```
 
 2. Install dependencies:
+
    ```bash
    npm install
    ```
@@ -31,6 +35,7 @@ Thank you for your interest in contributing to the MuteDeck Raycast extension! T
 ## Development Guidelines
 
 ### Code Style
+
 - Use TypeScript strict mode
 - Follow ESLint and Prettier configurations
 - Keep functions small and focused
@@ -38,6 +43,7 @@ Thank you for your interest in contributing to the MuteDeck Raycast extension! T
 - Document complex logic
 
 ### Command Structure
+
 - One command per file
 - Place commands in `src/commands/`
 - Use consistent naming
@@ -45,6 +51,7 @@ Thank you for your interest in contributing to the MuteDeck Raycast extension! T
 - Add keyboard shortcut hints
 
 ### Error Handling
+
 - Validate inputs
 - Provide clear error messages
 - Include recovery steps
@@ -52,6 +59,7 @@ Thank you for your interest in contributing to the MuteDeck Raycast extension! T
 - Add user guidance
 
 ### Testing
+
 - Test all commands
 - Verify error states
 - Check performance
@@ -61,6 +69,7 @@ Thank you for your interest in contributing to the MuteDeck Raycast extension! T
 ## Pull Request Process
 
 1. Create a feature branch:
+
    ```bash
    git checkout -b feature/your-feature-name
    ```
@@ -70,6 +79,7 @@ Thank you for your interest in contributing to the MuteDeck Raycast extension! T
 3. Update documentation as needed
 
 4. Run quality checks:
+
    ```bash
    npm run lint
    npm run build
@@ -84,11 +94,13 @@ Thank you for your interest in contributing to the MuteDeck Raycast extension! T
 ## Release Process
 
 1. Version bump:
+
    - Update version in package.json
    - Update CHANGELOG.md
    - Create release notes
 
 2. Build and test:
+
    ```bash
    npm run build
    # Test the built extension
@@ -103,4 +115,4 @@ Thank you for your interest in contributing to the MuteDeck Raycast extension! T
 
 - Open an issue for bugs
 - Start a discussion for features
-- Join our community for help 
+- Join our community for help

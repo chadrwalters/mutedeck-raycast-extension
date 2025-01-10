@@ -1,47 +1,53 @@
 # MuteDeck Raycast Extension Architecture
 
 ## Overview
-The MuteDeck Raycast extension provides quick access to meeting controls through individual commands. 
+
+The MuteDeck Raycast extension provides quick access to meeting controls through individual commands.
 It communicates with MuteDeck's local API (http://localhost:3491) to control microphone, video, and meeting status.
 
 ## Core Features
 
 ### 1. Meeting Controls
+
 - **Toggle Microphone** (`toggle-microphone`)
-   - Quick toggle for microphone mute/unmute
-   - Supports custom hotkey binding
-   - Toast notifications for status changes
-   - Error handling for common cases
-   - Bootstrap icon integration
-   - Real-time status updates
+
+  - Quick toggle for microphone mute/unmute
+  - Supports custom hotkey binding
+  - Toast notifications for status changes
+  - Error handling for common cases
+  - Bootstrap icon integration
+  - Real-time status updates
 
 - **Toggle Video** (`toggle-video`)
-   - Quick toggle for camera on/off
-   - Supports custom hotkey binding
-   - Toast notifications for status changes
-   - Error handling for common cases
-   - Bootstrap icon integration
-   - Real-time status updates
+
+  - Quick toggle for camera on/off
+  - Supports custom hotkey binding
+  - Toast notifications for status changes
+  - Error handling for common cases
+  - Bootstrap icon integration
+  - Real-time status updates
 
 - **Leave Meeting** (`leave-meeting`)
-   - Quick command to exit current meeting
-   - Confirmation dialog for safety
-   - Toast notifications for status
-   - Error handling for common cases
-   - Bootstrap icon integration
-   - Clear visual feedback
+
+  - Quick command to exit current meeting
+  - Confirmation dialog for safety
+  - Toast notifications for status
+  - Error handling for common cases
+  - Bootstrap icon integration
+  - Clear visual feedback
 
 - **Status Display** (`show-status`)
-   - Real-time meeting state monitoring
-   - Visual indicators for all states
-   - Auto-refresh with error handling
-   - Clear status feedback
-   - Bootstrap icon integration
-   - Comprehensive state display
+  - Real-time meeting state monitoring
+  - Visual indicators for all states
+  - Auto-refresh with error handling
+  - Clear status feedback
+  - Bootstrap icon integration
+  - Comprehensive state display
 
 ## Technical Architecture
 
 ### 1. API Integration Layer
+
 - **Base URL**: http://localhost:3491/v1
 - **Endpoints**:
   - `GET /status` - Get current states
@@ -56,6 +62,7 @@ It communicates with MuteDeck's local API (http://localhost:3491) to control mic
   - Graceful degradation
 
 ### 2. Command Structure
+
 - **Individual Command Files**:
   ```
   src/
@@ -78,7 +85,9 @@ It communicates with MuteDeck's local API (http://localhost:3491) to control mic
   - State persistence
 
 ### 3. User Interface
+
 - **Status View**:
+
   - Clean, minimal design
   - Real-time updates
   - Clear visual indicators
@@ -94,7 +103,9 @@ It communicates with MuteDeck's local API (http://localhost:3491) to control mic
   - Clear visual hierarchy
 
 ### 4. Error States
+
 - **MuteDeck Not Running**:
+
   - Clear error message
   - Startup instructions
   - Status indicator
@@ -102,6 +113,7 @@ It communicates with MuteDeck's local API (http://localhost:3491) to control mic
   - Visual feedback
 
 - **No Active Meeting**:
+
   - Status indication
   - Clear messaging
   - Action prevention
@@ -118,6 +130,7 @@ It communicates with MuteDeck's local API (http://localhost:3491) to control mic
 ## Development Guidelines
 
 ### 1. Code Organization
+
 - Separate command files
 - Shared utilities
 - Type definitions
@@ -126,6 +139,7 @@ It communicates with MuteDeck's local API (http://localhost:3491) to control mic
 - ESLint/Prettier integration
 
 ### 2. Error Handling
+
 - Pre-action validation
 - Clear error messages
 - User guidance
@@ -134,6 +148,7 @@ It communicates with MuteDeck's local API (http://localhost:3491) to control mic
 - Logging
 
 ### 3. Testing
+
 - Command functionality
 - Error conditions
 - Status accuracy
@@ -142,6 +157,7 @@ It communicates with MuteDeck's local API (http://localhost:3491) to control mic
 - Integration tests
 
 ### 4. Performance
+
 - Quick command execution
 - Efficient status polling
 - Minimal UI overhead
@@ -150,6 +166,7 @@ It communicates with MuteDeck's local API (http://localhost:3491) to control mic
 - State optimization
 
 ### 5. Asset Management
+
 - Bootstrap icon integration
 - Consistent visual language
 - High-quality screenshots
@@ -158,8 +175,11 @@ It communicates with MuteDeck's local API (http://localhost:3491) to control mic
 - Brand consistency
 
 ## Quality Standards
+
 - TypeScript strict mode
 - ESLint/Prettier configuration
 - Pre-commit hooks
+
+```
 
 ```
