@@ -47,7 +47,6 @@ logs/
 cache/
 output/
 *.log
-*.json
 config/nova.yaml
 .env
 
