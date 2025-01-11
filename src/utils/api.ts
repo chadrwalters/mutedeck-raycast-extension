@@ -31,14 +31,14 @@ export interface MuteDeckStatus {
 
 export async function getStatus(): Promise<MuteDeckStatus> {
   const { apiEndpoint } = getPreferenceValues<Preferences>();
-  console.log("Debug: Fetching status from", apiEndpoint);
+  console.log('Debug: Fetching status from', apiEndpoint);
   const response = await fetch(`${apiEndpoint}/v1/status`);
-  console.log("Debug: Status response", response.status, response.statusText);
+  console.log('Debug: Status response', response.status, response.statusText);
   if (!response.ok) {
     throw new Error(`Failed to get status: ${response.statusText}`);
   }
   const data = (await response.json()) as MuteDeckApiStatus;
-  console.log("Debug: Status data", data);
+  console.log('Debug: Status data', data);
   if (data.error) {
     throw new Error(data.error);
   }

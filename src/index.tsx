@@ -8,6 +8,7 @@ import {
   confirmAlert,
   getPreferenceValues,
   Alert,
+  showHUD,
 } from '@raycast/api';
 import { useEffect, useState } from 'react';
 import {
@@ -24,27 +25,15 @@ import {
   type MuteDeckStatus,
 } from './utils/api';
 
-interface State {
-  items?: MuteDeckStatus;
-  error?: Error;
-}
-
-interface Preferences {
-  statusRefreshInterval: string;
-  confirmLeave: boolean;
-  confirmMuteInPresentation: boolean;
-  confirmVideoInPresentation: boolean;
-  showToasts: boolean;
-}
-
 export default function Command(): JSX.Element {
-  console.log("Debug: Command component rendering");
-  const { showToasts, confirmMuteInPresentation, confirmVideoInPresentation, confirmLeave } = getPreferenceValues<{
-    showToasts: boolean;
-    confirmMuteInPresentation: boolean;
-    confirmVideoInPresentation: boolean;
-    confirmLeave: boolean;
-  }>();
+  console.log('Debug: Command component rendering');
+  const { showToasts, confirmMuteInPresentation, confirmVideoInPresentation, confirmLeave } =
+    getPreferenceValues<{
+      showToasts: boolean;
+      confirmMuteInPresentation: boolean;
+      confirmVideoInPresentation: boolean;
+      confirmLeave: boolean;
+    }>();
 
   const [state, setState] = useState<{
     items?: MuteDeckStatus;
@@ -54,12 +43,12 @@ export default function Command(): JSX.Element {
   useEffect(() => {
     async function fetchStatus() {
       try {
-        console.log("Debug: Fetching status");
+        console.log('Debug: Fetching status');
         const status = await getStatus();
-        console.log("Debug: Status fetched", status);
+        console.log('Debug: Status fetched', status);
         setState({ items: status });
       } catch (error) {
-        console.error("Debug: Error fetching status", error);
+        console.error('Debug: Error fetching status', error);
         setState({ error: error instanceof Error ? error : new Error(String(error)) });
       }
     }
@@ -176,7 +165,7 @@ export default function Command(): JSX.Element {
     return (
       <List>
         <List.EmptyView
-          icon={{ source: "exclamationmark.triangle" }}
+          icon={{ source: 'exclamationmark.triangle' }}
           title="Failed to get MuteDeck status"
           description={state.error.message}
         />

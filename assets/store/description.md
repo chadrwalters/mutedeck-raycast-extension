@@ -92,6 +92,6 @@ View your current meeting state at a glance.
 
 Need help? Check out our:
 
-- [Troubleshooting Guide](https://github.com/yourusername/mutedeck-raycast-extension/blob/main/docs/troubleshooting.md)
-- [GitHub Issues](https://github.com/yourusername/mutedeck-raycast-extension/issues)
-- [Documentation](https://github.com/yourusername/mutedeck-raycast-extension/blob/main/README.md)
+- [Troubleshooting Guide](https://github.com/chadrwalters/mutedeck-raycast-extension/blob/main/docs/troubleshooting.md)
+- [GitHub Issues](https://github.com/chadrwalters/mutedeck-raycast-extension/issues)
+- [Documentation](https://github.com/chadrwalters/mutedeck-raycast-extension/blob/main/README.md)
