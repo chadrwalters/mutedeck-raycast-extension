@@ -17,7 +17,7 @@
       "title": "Show Status",
       "description": "Show MuteDeck status and controls",
       "mode": "view",
-      "icon": "status.png"
+      "icon": "info.png"
     },
     {
       "name": "toggle-microphone",
@@ -38,7 +38,7 @@
       "title": "Leave Meeting",
       "description": "Leave current meeting",
       "mode": "no-view",
-      "icon": "leave.png"
+      "icon": "door.png"
     }
   ],
   "preferences": [

@@ -51,27 +51,38 @@ Before diving into specific issues, verify these common requirements:
 #### Symptoms
 
 - Missing icons
-- UI elements not displaying
-- Inconsistent appearance
+- Generic command icons showing
+- Icons not updating after changes
+- Inconsistent icon appearance
 
 #### Solutions
 
-1. Clear Raycast Cache
+1. Verify Icon Files
+   - Check icons are in `assets` directory
+   - Ensure each icon is a unique file (use `md5` to verify)
+   - Confirm PNG format and proper dimensions
+   - Verify transparent backgrounds
 
-   - Press ⌘ + ⌥ + R
-   - Wait for cache to clear
-   - Try commands again
+2. Clear Raycast Cache
+   ```bash
+   rm -rf ~/Library/Caches/com.raycast.macos
+   ```
+   - Quit Raycast completely
+   - Restart Raycast
+   - Run dev server again
 
-2. Reinstall Extension
+3. Check Icon References
+   - Verify package.json icon paths
+   - Use simple filenames (e.g., "info.png")
+   - Don't include "assets/" in the path
+   - Ensure icon names match exactly
 
-   - Uninstall extension
-   - Reinstall from store
-   - Reconfigure preferences
-
-3. Theme Issues
-   - Try different Raycast theme
-   - Reset to default theme
-   - Check for conflicts
+4. Icon Requirements
+   - Use PNG format
+   - Square dimensions (512x512 recommended)
+   - Transparent backgrounds
+   - Clear, simple designs
+   - Unique files for each icon
 
 ### 3. Status Not Updating
 
@@ -181,7 +192,7 @@ If all else fails:
 
 If you're still experiencing issues:
 
-1. Check [GitHub Issues](https://github.com/yourusername/mutedeck-raycast-extension/issues)
+1. Check [GitHub Issues](https://github.com/chadrwalters/mutedeck-raycast-extension/issues)
 2. Submit a new issue with:
    - Detailed problem description
    - Steps to reproduce

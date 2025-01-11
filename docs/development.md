@@ -14,7 +14,7 @@
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/yourusername/mutedeck-raycast-extension.git
+   git clone https://github.com/chadrwalters/mutedeck-raycast-extension.git
    cd mutedeck-raycast-extension
    ```
 
@@ -174,3 +174,41 @@ mutedeck-raycast-extension/
 - [TypeScript Documentation](https://www.typescriptlang.org/docs)
 - [React Documentation](https://reactjs.org/docs)
 - [ESLint Rules](https://eslint.org/docs/rules)
+
+## Icon Requirements
+
+### Icon Specifications
+- Format: PNG
+- Location: Place in `assets` directory
+- Size: Square dimensions (recommended 512x512 pixels)
+- Background: Transparent
+- Style: Clear, simple design that works in both light/dark modes
+
+### Required Icons
+1. Main Extension Icon
+   - Filename: `command-icon.png`
+   - Used for: Extension listing and identification
+
+2. Command Icons
+   - Show Status: `info.png`
+   - Toggle Microphone: `microphone.png`
+   - Toggle Video: `camera.png`
+   - Leave Meeting: `door.png`
+
+### Icon Setup
+1. Place all icons directly in the `assets` directory
+2. Reference in package.json using just the filename:
+   ```json
+   "icon": "command-icon.png",
+   "commands": [
+     {
+       "icon": "info.png"
+     }
+   ]
+   ```
+3. Ensure each icon is a unique file (not copies of the same image)
+4. Clear Raycast's cache after icon changes:
+   ```bash
+   rm -rf ~/Library/Caches/com.raycast.macos
+   ```
+5. Restart Raycast for changes to take effect

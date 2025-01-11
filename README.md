@@ -75,8 +75,8 @@ We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) f
 
 ## Support
 
-- [Report an Issue](https://github.com/yourusername/mutedeck-raycast-extension/issues)
-- [Request a Feature](https://github.com/yourusername/mutedeck-raycast-extension/issues/new)
+- [Report an Issue](https://github.com/chadrwalters/mutedeck-raycast-extension/issues)
+- [Request a Feature](https://github.com/chadrwalters/mutedeck-raycast-extension/issues/new)
 - [View Documentation](docs/)
 
 ## License
