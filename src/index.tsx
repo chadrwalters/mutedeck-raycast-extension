@@ -8,7 +8,6 @@ import {
   confirmAlert,
   getPreferenceValues,
   Alert,
-  showHUD,
 } from '@raycast/api';
 import { useEffect, useState } from 'react';
 import {
@@ -26,7 +25,6 @@ import {
 } from './utils/api';
 
 export default function Command(): JSX.Element {
-  console.log('Debug: Command component rendering');
   const { showToasts, confirmMuteInPresentation, confirmVideoInPresentation, confirmLeave } =
     getPreferenceValues<{
       showToasts: boolean;
@@ -43,12 +41,9 @@ export default function Command(): JSX.Element {
   useEffect(() => {
     async function fetchStatus() {
       try {
-        console.log('Debug: Fetching status');
         const status = await getStatus();
-        console.log('Debug: Status fetched', status);
         setState({ items: status });
       } catch (error) {
-        console.error('Debug: Error fetching status', error);
         setState({ error: error instanceof Error ? error : new Error(String(error)) });
       }
     }
