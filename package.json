@@ -17,28 +17,28 @@
       "title": "Show Status",
       "description": "Show MuteDeck status and controls",
       "mode": "view",
-      "icon": "icons/status.png"
+      "icon": "status.png"
     },
     {
       "name": "toggle-microphone",
       "title": "Toggle Microphone",
       "description": "Toggle microphone mute/unmute",
       "mode": "no-view",
-      "icon": "icons/microphone.png"
+      "icon": "microphone.png"
     },
     {
       "name": "toggle-video",
       "title": "Toggle Video",
       "description": "Toggle camera on/off",
       "mode": "no-view",
-      "icon": "icons/camera.png"
+      "icon": "camera.png"
     },
     {
       "name": "leave-meeting",
       "title": "Leave Meeting",
       "description": "Leave current meeting",
       "mode": "no-view",
-      "icon": "icons/leave.png"
+      "icon": "leave.png"
     }
   ],
   "preferences": [
