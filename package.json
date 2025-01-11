@@ -3,7 +3,7 @@
   "name": "mutedeck",
   "title": "Mutedeck",
   "description": "Control MuteDeck from Raycast",
-  "icon": "command-icon",
+  "icon": "command-icon.png",
   "author": "chad_walters",
   "categories": [
     "Applications",
@@ -17,28 +17,28 @@
       "title": "Show Status",
       "description": "Show MuteDeck status and controls",
       "mode": "view",
-      "icon": "status"
+      "icon": "status.png"
     },
     {
       "name": "toggle-microphone",
       "title": "Toggle Microphone",
       "description": "Toggle microphone mute/unmute",
       "mode": "no-view",
-      "icon": "microphone"
+      "icon": "microphone.png"
     },
     {
       "name": "toggle-video",
       "title": "Toggle Video",
       "description": "Toggle camera on/off",
       "mode": "no-view",
-      "icon": "camera"
+      "icon": "camera.png"
     },
     {
       "name": "leave-meeting",
       "title": "Leave Meeting",
       "description": "Leave current meeting",
       "mode": "no-view",
-      "icon": "leave"
+      "icon": "leave.png"
     }
   ],
   "preferences": [
