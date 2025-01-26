@@ -7,7 +7,7 @@ import {
   isMuted,
   isVideoOn,
   type MuteDeckStatus,
-} from '../utils/api';
+} from './utils/api';
 
 interface State {
   status: MuteDeckStatus | null;
@@ -41,7 +41,7 @@ export default function Command(): JSX.Element {
 
   function getStatusIcon(): Icon {
     if (!state.status || !isMuteDeckRunning(state.status)) {
-      return Icon.XmarkCircle;
+      return Icon.XMarkCircle;
     }
 
     if (!isInMeeting(state.status)) {

@@ -7,12 +7,17 @@ import {
   isMuted,
   isVideoOn,
   type MuteDeckStatus,
-} from '../utils/api';
+} from './utils/api';
 
 interface State {
   status: MuteDeckStatus | null;
   isLoading: boolean;
   error: Error | null;
+}
+
+interface ErrorResponse {
+  message: string;
+  details?: string;
 }
 
 export default function Command(): JSX.Element {
@@ -31,9 +36,10 @@ export default function Command(): JSX.Element {
       const status = await getStatus();
       setState((prev) => ({ ...prev, status, isLoading: false }));
     } catch (error) {
+      const errorResponse = error as ErrorResponse;
       setState((prev) => ({
         ...prev,
-        error: error instanceof Error ? error : new Error('Failed to fetch status'),
+        error: new Error(errorResponse.message || 'Failed to fetch status'),
         isLoading: false,
       }));
     }
@@ -41,7 +47,7 @@ export default function Command(): JSX.Element {
 
   function getStatusIcon(): Icon {
     if (!state.status || !isMuteDeckRunning(state.status)) {
-      return Icon.XmarkCircle;
+      return Icon.XMarkCircle;
     }
 
     if (!isInMeeting(state.status)) {
@@ -49,14 +55,14 @@ export default function Command(): JSX.Element {
     }
 
     if (isMuted(state.status)) {
-      return Icon.MicrophoneDisabled;
+      return Icon.SpeakerOff;
     }
 
-    return Icon.Microphone;
+    return Icon.Speaker;
   }
 
   if (state.error) {
-    showToast({
+    void showToast({
       style: Toast.Style.Failure,
       title: 'Failed to Get Status',
       message: state.error.message,

@@ -7,17 +7,20 @@ As of January 2025, our dependency audit shows several vulnerabilities in develo
 ### Current Status
 
 We have 12 identified vulnerabilities:
+
 - 8 High severity
 - 4 Moderate severity
 
 ### Why We Accept These Risks
 
 1. **Development-Only Impact**
+
    - All identified vulnerabilities are in development dependencies
    - These dependencies are not included in the production build
    - They only affect developers working on the codebase, not end users
 
 2. **Raycast Extension Requirements**
+
    - We use `@raycast/api@^1.88.4` which is required for Raycast extension development
    - The vulnerabilities come from this package's development dependencies
    - Modifying these dependencies could break the extension's development workflow
@@ -36,6 +39,7 @@ We have 12 identified vulnerabilities:
 ### Reporting New Vulnerabilities
 
 If you discover a security vulnerability that affects the runtime behavior of the extension (not development dependencies), please:
+
 1. Open a security advisory on our GitHub repository
 2. For critical issues, contact the maintainers directly
 

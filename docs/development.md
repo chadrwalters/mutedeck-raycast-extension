@@ -178,6 +178,7 @@ mutedeck-raycast-extension/
 ## Icon Requirements
 
 ### Icon Specifications
+
 - Format: PNG
 - Location: Place in `assets` directory
 - Size: Square dimensions (recommended 512x512 pixels)
@@ -185,7 +186,9 @@ mutedeck-raycast-extension/
 - Style: Clear, simple design that works in both light/dark modes
 
 ### Required Icons
+
 1. Main Extension Icon
+
    - Filename: `command-icon.png`
    - Used for: Extension listing and identification
 
@@ -196,6 +199,7 @@ mutedeck-raycast-extension/
    - Leave Meeting: `door.png`
 
 ### Icon Setup
+
 1. Place all icons directly in the `assets` directory
 2. Reference in package.json using just the filename:
    ```json

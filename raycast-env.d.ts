@@ -9,41 +9,40 @@
 
 type ExtensionPreferences = {
   /** API Endpoint - The MuteDeck API endpoint (default: http://localhost:3491) */
-  "apiEndpoint": string,
+  apiEndpoint: string;
   /** Status Refresh Interval - How often to refresh the status display (in seconds) */
-  "statusRefreshInterval": string,
+  statusRefreshInterval: string;
   /** Confirm Leave Meeting - Show confirmation dialog before leaving a meeting */
-  "confirmLeave": boolean,
+  confirmLeave: boolean;
   /** Confirm Mute While Presenting - Show confirmation dialog before toggling microphone while presenting or recording */
-  "confirmMuteInPresentation": boolean,
+  confirmMuteInPresentation: boolean;
   /** Confirm Video While Presenting - Show confirmation dialog before toggling camera while presenting or recording */
-  "confirmVideoInPresentation": boolean,
+  confirmVideoInPresentation: boolean;
   /** Show Toast Notifications - Show toast notifications for command feedback */
-  "showToasts": boolean
-}
+  showToasts: boolean;
+};
 
 /** Preferences accessible in all the extension's commands */
-declare type Preferences = ExtensionPreferences
+declare type Preferences = ExtensionPreferences;
 
 declare namespace Preferences {
   /** Preferences accessible in the `show-status` command */
-  export type ShowStatus = ExtensionPreferences & {}
+  export type ShowStatus = ExtensionPreferences & {};
   /** Preferences accessible in the `toggle-microphone` command */
-  export type ToggleMicrophone = ExtensionPreferences & {}
+  export type ToggleMicrophone = ExtensionPreferences & {};
   /** Preferences accessible in the `toggle-video` command */
-  export type ToggleVideo = ExtensionPreferences & {}
+  export type ToggleVideo = ExtensionPreferences & {};
   /** Preferences accessible in the `leave-meeting` command */
-  export type LeaveMeeting = ExtensionPreferences & {}
+  export type LeaveMeeting = ExtensionPreferences & {};
 }
 
 declare namespace Arguments {
   /** Arguments passed to the `show-status` command */
-  export type ShowStatus = {}
+  export type ShowStatus = {};
   /** Arguments passed to the `toggle-microphone` command */
-  export type ToggleMicrophone = {}
+  export type ToggleMicrophone = {};
   /** Arguments passed to the `toggle-video` command */
-  export type ToggleVideo = {}
+  export type ToggleVideo = {};
   /** Arguments passed to the `leave-meeting` command */
-  export type LeaveMeeting = {}
+  export type LeaveMeeting = {};
 }
-

@@ -58,20 +58,24 @@ Before diving into specific issues, verify these common requirements:
 #### Solutions
 
 1. Verify Icon Files
+
    - Check icons are in `assets` directory
    - Ensure each icon is a unique file (use `md5` to verify)
    - Confirm PNG format and proper dimensions
    - Verify transparent backgrounds
 
 2. Clear Raycast Cache
+
    ```bash
    rm -rf ~/Library/Caches/com.raycast.macos
    ```
+
    - Quit Raycast completely
    - Restart Raycast
    - Run dev server again
 
 3. Check Icon References
+
    - Verify package.json icon paths
    - Use simple filenames (e.g., "info.png")
    - Don't include "assets/" in the path
