@@ -2,12 +2,33 @@
 
 Control your meeting audio and video directly from Raycast. MuteDeck provides quick access to essential meeting controls, making it easy to manage your presence in online meetings.
 
+## Demo
+
+![MuteDeck Raycast Extension Demo](assets/store/screencast.gif)
+
 ## Features
 
-- 🎤 Toggle microphone mute/unmute
-- 📹 Toggle video on/off
-- 🚪 Leave current meeting
-- 📊 View meeting status and controls
+- 🎤 **Microphone Control**
+  - Quick mute/unmute toggle
+  - Status indicator
+  - Safety confirmations while presenting
+
+- 📹 **Camera Control**
+  - Toggle video on/off
+  - Visual status display
+  - Confirmation dialogs for safe operation
+
+- 🚪 **Meeting Management**
+  - One-click meeting exit
+  - Current meeting status
+  - Optional leave confirmations
+
+- 📊 **Real-time Status**
+  - Meeting state indicator
+  - Microphone status
+  - Camera status
+  - Screen sharing status
+  - Recording status
 
 ## Requirements
 
