@@ -6,6 +6,12 @@ Control your meeting audio and video directly from Raycast. MuteDeck provides qu
 
 ![MuteDeck Raycast Extension Demo](assets/store/screencast.gif)
 
+## Screenshots
+
+![Command List](metadata/screenshots/list-view.png)
+![Status Display](metadata/screenshots/status-display.png)
+![Confirmation Dialog](metadata/screenshots/confirmation.png)
+
 ## Features
 
 - 🎤 **Microphone Control**
